@@ -59,4 +59,20 @@ Site 2 has also an HDP cluster to store and process the data. The following pict
     - In VirtualBox, you have to add forwarding for port 8787
     
 ### Design data workflow for site 1
-  - 
+
+Starting with a blank NiFi canvas in Site 1. Drag and drop processors to the canvas to design the workflow:
+
+1. Add a GetFile processor
+	2. Right click on the processor, choose configure and go to the properties tab
+	3. Set Input Directory to /tmp/input/
+	4. Create the /tmp/input directory on your machine and make sure NiFi has access to it
+1. Add a SegmentContent processor and configure it
+	2. Set Segment Size to 1 MB. This will split each flow file into 1 MB segments
+1. Add an UpdateAttribut processor
+	2. Press the plus sign in the top right of the dialog to add a new property
+	3. Add a property called "mime.type" and set this to "application/gzip"
+1. Add a compress content processor
+1. Add a Remote Process Group
+	2. Set URL to http://hdf2:8687/nifi (URL of the second NiFi instance)
+
+
