@@ -1,12 +1,12 @@
 # Using HDF for Site to site data ingestion into HDP
 
 ## Contents
-  - [Prebuilt sandbox VM](https://github.com/abajwa-hw/ambari-workshops/blob/master/contributed-views.md#ambari-20-sandbox)
-  - [Views screenshots](https://github.com/abajwa-hw/ambari-workshops/blob/master/contributed-views.md#views-screenshots)
-  - [Setup views on existing cluster](https://github.com/abajwa-hw/ambari-workshops/blob/master/contributed-views.md#setup-instructions-for-contributed-views)
-  - [Install Ambari 2.0 from scratch](https://github.com/abajwa-hw/security-workshops/blob/master/Setup-kerberos-Ambari.md)
-  - [Try new Ambari 2.0 security wizard](https://github.com/abajwa-hw/security-workshops/blob/master/Setup-kerberos-Ambari.md#run-ambari-security-wizard)
-
+  - [Demo scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#demo-scenario)
+  - [Challenges with site to site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#challenges-with-site-to-site-ingestion)
+  - [NiFi for site 2 site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#nifi-for-site-2-site-ingestion)
+  - [Demo setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#demo-setup)
+  - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-1)
+  - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-2)
 ---------------
   
 ### Demo scenario
@@ -74,5 +74,53 @@ Starting with a blank NiFi canvas in Site 1. Drag and drop processors to the can
 1. Add a compress content processor
 1. Add a Remote Process Group
 	2. Set URL to http://hdf2:8687/nifi (URL of the second NiFi instance)
+
+Connect the different processor to build the data flow logic. To connect two processors, hover over the source processor until the begin connection icon appears, drag this onto the destination processor and release it. This brings up the connection configuration dialog.
+
+1. Connect the GetFile to the SegmentContent processor
+	2. Leave the default properties and press add
+2. Connect the SegmentContent to the UpdateAttribut processor
+	3. Check only segments in the Relations option and press add. The UpdateAttribut will receive the segment and not the original file
+	4. Right click on the SegmentContent processor, choose configure and go to the Settings tab
+	5. In the Auto terminate relations, choose Original do drop the original file
+3. Connect the UpdateAttribut to the CompressContent processor
+	4. Leave the default properties and press add
+
+We won't be able to connect the UpdateAttribut to the CompressContent processor for now. We need to design the site 2 workflow before.
+
+### Design data workflow for site 2
+
+Starting with a blank NiFi canvas in Site 2. Drag and drop processors to the canvas to design the workflow:
+
+1. Add a an Input Port and name it RemoteIngest
+2. Add a CompressContent processor and configure it
+	3. Set mode de decompress and validate
+3. Add a MergeContent processor and configure it. 
+	4. Here we have a choice between two strategies. (1) Merge the segments to get the exact same original files (2) Merge the segments independently of their original files. Set Merge Strategy to Defragment to choose the first option in this lab.
+5. Add a PutHDFS processor and configure it
+	6. Set Hadoop Configuration Ressources to /etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml 
+	7. Set Directory to /tmp/nifi
+	8. Set Conflict Resolution Strategy to Replace
+
+Now connect the different processors as following
+
+1. Connect the Input port to the CompressContent processor and press add
+2. Connect the CompressContent to the MergeContent processor
+	3. Choose success in the relation type
+	4. Right click on the CompressContent processor, choose configure and go to the Settings tab
+	5. In the Auto terminate relations, check failure to drop the flow file if the decompression fails
+3. Connect the MergeContent to the PutHDFS processor
+	4. Check only merged in the Relations option and press add. The PutHDFS will receive the merged file and not the segments
+	5. Right click on the MergedContent processor, choose configure and go to the Settings tab
+	6. Choose auto terminate failure and original relations
+	7. Right click on the PutHDFS processor, choose configure and go to the Settings tab
+	8. Choose auto terminate failure and success relations
+
+At this level, we should have all the processors configured. This means that their status are stopped (red square) as in the following screenshoot.
+
+![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site2.png)
+
+
+
 
 
