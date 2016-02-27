@@ -1,4 +1,4 @@
-# Using HDF for Site to site data ingestion into HDP
+# Using HDF for site to site data ingestion into HDP
 
 ## Contents
   - [Demo scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#demo-scenario)
@@ -7,6 +7,7 @@
   - [Demo setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#demo-setup)
   - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-1)
   - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-2)
+  
 ---------------
   
 ### Demo scenario
@@ -120,7 +121,24 @@ At this level, we should have all the processors configured. This means that the
 
 ![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site2.png)
 
+### Connect the two sites
 
+Now that we have site 2 dataflow designed, we can continue designing the site 1 dataflow. In the first NiFi workflow designer, do the following:
+
+1. Connect the CompressContent to the Remote Process Group
+	2. Choose the success relation and press add
+	3. Make sure that the "RemoteIngest" input selected in the To Input property
+4. Right click on the CompressContent processor, choose configure and go to the Settings tab
+	8. Choose auto terminate failure relation
+9. Right click on the Remote Group Process and click on enable transmission
+
+At this level, we should have all the processors configured in site 1 as in the following screenshoot.
+
+![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site1.png)
+
+### Start the workflows
+
+Select all the processors in site 1 and press play at the top of the screen. Do the same thing in site 2. To test the workflow, copy one or several files to the input folder you chose in site 1 (/tmp/input). NiFi will pick those files, splits them into 1 MB pieces, compress each piece and send them to Site 2. The input in Site 2 receives the compressed pieces, decompress them, and merge pieces from them same file together to reconstruct the original files. Finally, those files are stored in HDFS in /tmp/nifi. Take a minute to verify this behaviour and observe the number of input/output files in each processor as well as the number of input/output bytes. Finally, verify that you have received the files in HDFS through Ambari HDFS view.
 
 
 
