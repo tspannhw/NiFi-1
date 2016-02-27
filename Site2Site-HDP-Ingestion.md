@@ -7,6 +7,8 @@
   - [Demo setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#demo-setup)
   - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-1)
   - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-2)
+  - [Connect the two sites](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#connect-the-two-sites)
+  - [Start the workflows](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#start-the-workflows)
   
 ---------------
   
@@ -74,7 +76,7 @@ Starting with a blank NiFi canvas in Site 1. Drag and drop processors to the can
 	3. Add a property called "mime.type" and set this to "application/gzip"
 1. Add a compress content processor
 1. Add a Remote Process Group
-	2. Set URL to http://hdf2:8687/nifi (URL of the second NiFi instance)
+	2. Set URL to http://localhost:8687/nifi (URL of the second NiFi instance)
 
 Connect the different processor to build the data flow logic. To connect two processors, hover over the source processor until the begin connection icon appears, drag this onto the destination processor and release it. This brings up the connection configuration dialog.
 
@@ -139,6 +141,3 @@ At this level, we should have all the processors configured in site 1 as in the 
 ### Start the workflows
 
 Select all the processors in site 1 and press play at the top of the screen. Do the same thing in site 2. To test the workflow, copy one or several files to the input folder you chose in site 1 (/tmp/input). NiFi will pick those files, splits them into 1 MB pieces, compress each piece and send them to Site 2. The input in Site 2 receives the compressed pieces, decompress them, and merge pieces from them same file together to reconstruct the original files. Finally, those files are stored in HDFS in /tmp/nifi. Take a minute to verify this behaviour and observe the number of input/output files in each processor as well as the number of input/output bytes. Finally, verify that you have received the files in HDFS through Ambari HDFS view.
-
-
-
