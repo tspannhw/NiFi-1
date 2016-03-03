@@ -1,14 +1,14 @@
 # Using HDF for multisite data ingestion into HDP
 
 ## Contents
-  - [Demo scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#demo-scenario)
-  - [Challenges with site to site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#challenges-with-site-to-site-ingestion)
-  - [NiFi for site 2 site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#nifi-for-site-2-site-ingestion)
-  - [Demo setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#demo-setup)
-  - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-1)
-  - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#design-data-workflow-for-site-2)
-  - [Connect the two sites](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#connect-the-two-sites)
-  - [Start the workflows](https://github.com/ahadjidj-hw/NiFi/blob/master/Site2Site-HDP-Ingestion.md#start-the-workflows)
+  - [Demo scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#demo-scenario)
+  - [Challenges with site to site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#challenges-with-site-to-site-ingestion)
+  - [NiFi for site 2 site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#nifi-for-site-2-site-ingestion)
+  - [Demo setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#demo-setup)
+  - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-1)
+  - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-2)
+  - [Connect the two sites](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#connect-the-two-sites)
+  - [Start the workflows](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#start-the-workflows)
   
 ---------------
   
@@ -20,7 +20,7 @@ At a factory level, each machine generates sensors data and stores it in files t
 At the core site, files coming from all factories are merged and stored for further processing. 
 For instance, data can be stored in a Hadoop cluster (HDFS or HBase) to implement predective maintenance application with Spark.
 
-![Scenario] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site2Site.png)
+![Scenario] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/Site2Site.png)
 
 ### Challenges with multisite data ingestion
 Implementing a multisite data flow with traditional Hadoop solutions is a tedious and time consuming task. 
@@ -40,7 +40,7 @@ Let see how we can build this dataflow in only few minutes with NiFi. Let's cons
 Site 1 has a NiFi instance to collect, split, compress and send generated files to site 2. Site 2 has a NiFi instance to collect, decompress and merge these splits.
 Site 2 has also an HDP cluster to store and process the data. The following picture shows this process at a very high level.
 
-![NiFi] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/NiFi-S2S.png)
+![NiFi] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/NiFi-S2S.png)
 
 ### Demo setup
 
@@ -121,7 +121,7 @@ Now connect the different processors as following
 
 At this level, we should have all the processors configured. This means that their status are stopped (red square) as in the following screenshoot.
 
-![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site2.png)
+![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/Site2.png)
 
 ### Connect the two sites
 
@@ -136,7 +136,7 @@ Now that we have the dataflow designed in site 2, we can continue our design in 
 
 At this level, we should have all the processors configured in site 1 as in the following screenshoot.
 
-![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site1.png)
+![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/Site1.png)
 
 ### Start the workflows
 
