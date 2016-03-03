@@ -3,7 +3,7 @@
 ## Contents
   - [Scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#scenario)
   - [Challenges with multisite data ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#challenges-with-multisite-data-ingestion)
-  - [HDF for multisite data ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#nifi-for-multisite-data-ingestion)
+  - [HDF for multisite data ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#hdf-for-multisite-data-ingestion)
   - [Setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#setup)
   - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-1)
   - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-2)
