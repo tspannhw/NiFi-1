@@ -2,8 +2,8 @@
 
 ## Contents
   - [Demo scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#demo-scenario)
-  - [Challenges with site to site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#challenges-with-site-to-site-ingestion)
-  - [NiFi for site 2 site ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#nifi-for-site-2-site-ingestion)
+  - [Challenges with multisite data ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#challenges-with-multisite-data-ingestion)
+  - [NiFi for multisite data ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#nifi-for-multisite-data-ingestion)
   - [Demo setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#demo-setup)
   - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-1)
   - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-2)
@@ -136,7 +136,7 @@ Now that we have the dataflow designed in site 2, we can continue our design in 
 
 At this level, we should have all the processors configured in site 1 as in the following screenshoot.
 
-![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/Site1.png)
+![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site1.png)
 
 ### Start the workflows
 
