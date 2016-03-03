@@ -1,10 +1,10 @@
 # Using HDF for multisite data ingestion into HDP
 
 ## Contents
-  - [Demo scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#demo-scenario)
+  - [Scenario](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#scenario)
   - [Challenges with multisite data ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#challenges-with-multisite-data-ingestion)
   - [NiFi for multisite data ingestion](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#nifi-for-multisite-data-ingestion)
-  - [Demo setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#demo-setup)
+  - [Setup](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#setup)
   - [Design data workflow for site 1](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-1)
   - [Design data workflow for site 2](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#design-data-workflow-for-site-2)
   - [Connect the two sites](https://github.com/ahadjidj-hw/NiFi/blob/master/Multisite-Data-Ingestion/README.md#connect-the-two-sites)
@@ -12,7 +12,7 @@
   
 ---------------
   
-### Demo scenario
+### Scenario
 Multisite data ingestion is a common problem for compagnies doing big data with geographically distributed business. 
 Multisite data ingestion is collecting data generated at different regional sites and bringing it to a core site for further analysis. 
 An example of this is a manifacturing company having facories in several countries. 
@@ -42,7 +42,7 @@ Site 2 has also an HDP cluster to store and process the data. The following pict
 
 ![NiFi] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/NiFi-S2S.png)
 
-### Demo setup
+### Setup
 
 - **Preparing site 1:** installing NiFi
   - Download Hortonworks DataFlow [here](http://hortonworks.com/hdp/downloads/#hdf)
@@ -136,7 +136,7 @@ Now that we have the dataflow designed in site 2, we can continue our design in 
 
 At this level, we should have all the processors configured in site 1 as in the following screenshoot.
 
-![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Site1.png)
+![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/Site1.png)
 
 ### Start the workflows
 
