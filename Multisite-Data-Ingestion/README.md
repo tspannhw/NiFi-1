@@ -31,7 +31,7 @@ Also, generated files can be huge which makes it impossible to send them directl
 Finally, securing data and providing provenance while data is travelling on internet is a must due to the sensitive nature of data.
 
 ### HDF for multisite data ingestion
-The previously described scenario is a piece of cake for HDF powered by Apache Knife. With HDF, we easily implement a dataflow to collect data from several sites with security and data provenance.
+The previously described scenario is a piece of cake for HDF powered by Apache NiFi. With HDF, we easily implement a dataflow to collect data from several sites with security and data provenance.
 HDF can split generated files into smaller pieces and compress them to optimize data transmissions. 
 These pieces can be merged into bigger files on the core site to optimize data storage and processing (eg. avoid small files on HDFS).
 All these features and others are available out of the box.
