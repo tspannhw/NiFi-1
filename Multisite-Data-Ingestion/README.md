@@ -101,7 +101,7 @@ Starting with a blank NiFi canvas in Site 2. Drag and drop processors to the can
 3. Add a MergeContent processor and configure it 
 	4. Here we have a choice between two strategies. (1) Merge the segments to get the exact same original files (2) Merge the segments independently of their original files. Set Merge Strategy to `Defragment` to choose the first option.
 5. Add a PutHDFS processor and configure it
-	6. Set Hadoop Configuration Resources to `/etc./hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml` 
+	6. Set Hadoop Configuration Resources to `/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml` 
 	7. Set Directory to `/tmp/nifi`
 	8. Set Conflict Resolution Strategy to `Replace`
 
@@ -121,7 +121,7 @@ Now connect the different processors as following
 
 At this level, we should have all the processors configured. This means that their status is stopped (red square) as in the following screenshot.
 
-! [Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/Site2.png)
+![Site2] (https://raw.githubusercontent.com/ahadjidj-hw/NiFi/master/Multisite-Data-Ingestion/images/Site2.png)
 
 ### Connect the two sites
 
