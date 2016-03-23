@@ -89,7 +89,7 @@ Connect the processors to build the data flow logic. To connect two processors, 
 3. Connect the UpdateAttribut to the CompressContent processor
 	4. Leave the default properties and press add
 
-We won't be able to connect the UpdateAttribut to the CompressContent processor for now. We need to design the site 2 workflow before.
+We won't be able to connect the CompressContent to the Remote Process Group for now. We need to design the site 2 workflow before.
 
 ### Design data workflow for site 2
 
