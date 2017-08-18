@@ -28,7 +28,7 @@ ambari_version="${ambari_version:-2.5.2.0-257}"
 ambari_version_major="${ambari_version_major:-$(echo ${ambari_version} | cut -c 1).x}"
 ambari_server_custom_script="${ambari_server_custom_script:-/bin/true}"
 ambari_repo_baseurl="${ambari_repo_baseurl:-http://public-repo-1.hortonworks.com/ambari}"
-ambari_repo= "http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos7/2.x/BUILDS/2.5.2.0-257/ambaribn.repo" ## if using a local repo. Otherwise the repo path is determined automatically in a line below.
+ambari_repo="http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos7/2.x/BUILDS/2.5.2.0-257/ambaribn.repo" ## if using a local repo. Otherwise the repo path is determined automatically in a line below.
 curl="curl -ksSL"
 
 command_exists() {
