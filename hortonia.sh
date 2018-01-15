@@ -14,7 +14,7 @@ export TERM=xterm
 export stack=${stack:-hdp}    #cluster name
 export ambari_pass=${ambari_pass:-BadPass#1}  #ambari password
 export ambari_services=${ambari_services:-HBASE HDFS MAPREDUCE2 PIG YARN HIVE ZOOKEEPER SLIDER AMBARI_INFRA TEZ RANGER ATLAS KAFKA SPARK ZEPPELIN}   #HDP services
-export ambari_stack_version=${ambari_stack_version:-2.6.4.0}  #HDP Version
+export ambari_stack_version=${ambari_stack_version:-2.6}  #HDP Version
 export host_count=${host_count:-skip}      #number of nodes, defaults to 1
 export enable_kerberos=${enable_kerberos:-true}      
 export kdc_realm=${kdc_realm:-HWX.COM}      #KDC realm
@@ -31,7 +31,7 @@ export deploy=true
 
 export host=$(hostname -f)
 ## overrides
-#export ambari_stack_version=2.6
+export ambari_stack_version=2.6.4
 #export ambari_repo=https://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.5.0.3/ambari.repo
 
 export install_ambari_server ambari_pass host_count ambari_services
